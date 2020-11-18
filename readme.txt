@@ -1,6 +1,6 @@
                                 Magic swf shell
 
-                                  Version 0.2
+                                  Version 0.2.1
 
                          This software made by Popov Evgeniy Alekseyevich
 
@@ -36,3 +36,4 @@ Change log
 
 0.1 - Initial version.
 0.2 - Small changes.
+0.2.1 - Small bug was fixed.
