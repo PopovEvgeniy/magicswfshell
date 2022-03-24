@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Dialogs,
-  ExtCtrls, StdCtrls, ComCtrls;
+  ExtCtrls, StdCtrls, ComCtrls, LCLIntf;
 
 type
 
@@ -17,6 +17,7 @@ type
     Button2: TButton;
     LabeledEdit1: TLabeledEdit;
     OpenDialog1: TOpenDialog;
+    StatusBar1: TStatusBar;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -29,9 +30,11 @@ type
   end; 
 
 var Form1: TForm1;
-function get_path(): string;
+function get_projector(): string;
+function get_compiler(): string;
 function convert_file_name(source:string): string;
 function execute_program(executable:string;argument:string):Integer;
+procedure check_projector();
 procedure window_setup();
 procedure dialog_setup();
 procedure interface_setup();
@@ -42,9 +45,14 @@ procedure compile_flash(target:string);
 
 implementation
 
-function get_path(): string;
+function get_projector(): string;
 begin
- get_path:=ExtractFilePath(Application.ExeName);
+ get_projector:=ExtractFilePath(Application.ExeName)+'flashplayer_32_sa.exe';
+end;
+
+function get_compiler(): string;
+begin
+ get_compiler:=ExtractFilePath(Application.ExeName)+'magicswf.exe';
 end;
 
 function convert_file_name(source:string): string;
@@ -53,8 +61,7 @@ begin
  target:=source;
  if Pos(' ',source)>0 then
  begin
-  target:='"';
- target:=target+source+'"';
+  target:='"'+source+'"';
  end;
  convert_file_name:=target;
 end;
@@ -70,10 +77,25 @@ begin
  execute_program:=code;
 end;
 
+procedure check_projector();
+var target:string;
+begin
+ target:=get_projector();
+ if FileExists(target)=False then
+ begin
+  if MessageDlg(Application.Title,'Flash player projector not found. Do you want open download page?',mtConfirmation,mbYesNo,0)=mrYes then
+  begin
+   OpenDocument('http://www.adobe.com/support/flashplayer/downloads.html');
+  end;
+
+ end;
+
+end;
+
 procedure window_setup();
 begin
  Application.Title:='Magic swf shell';
- Form1.Caption:='Magic swf shell 0.2.1';
+ Form1.Caption:='Magic swf shell 0.2.8';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
@@ -109,12 +131,14 @@ begin
  Form1.Button1.Caption:='Open';
  Form1.Button2.Caption:='Start';
  Form1.OpenDialog1.Title:='Open a Adobe flash movie';
+ Form1.StatusBar1.SimpleText:='Please set the target file';
 end;
 
 procedure setup();
 begin
  common_setup();
  language_setup();
+ check_projector();
 end;
 
 procedure compile_flash(target:string);
@@ -122,17 +146,17 @@ var host,player,argument:string;
 var message:array[0..5] of string=('Operation was successfully complete','Cant open input file','Cant create output file','Cant allocate memory','Executable file of Flash Player Projector was corrupted','Flash movie was corrupted');
 var status:Integer;
 begin
- host:=get_path()+'magicswf.exe';
- player:=get_path()+'player.exe';
+ host:=get_compiler();
+ player:=get_projector();
  argument:=convert_file_name(player)+' '+convert_file_name(target);
  status:=execute_program(host,argument);
  if status=-1 then
  begin
-  ShowMessage('Can not execute a external program');
+  Form1.StatusBar1.SimpleText:='Can not execute a external program';
  end
  else
  begin
-  ShowMessage(message[status]);
+  Form1.StatusBar1.SimpleText:=message[status];
  end;
 
 end;
@@ -147,6 +171,7 @@ end;
 procedure TForm1.LabeledEdit1Change(Sender: TObject);
 begin
  Form1.Button2.Enabled:=Form1.LabeledEdit1.Text<>'';
+ Form1.StatusBar1.SimpleText:='Ready';
 end;
 
 procedure TForm1.OpenDialog1CanClose(Sender: TObject; var CanClose: boolean);

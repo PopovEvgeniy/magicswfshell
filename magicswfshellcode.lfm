@@ -1,28 +1,27 @@
 object Form1: TForm1
   Left = 254
-  Height = 101
+  Height = 141
   Top = 155
-  Width = 352
+  Width = 449
   Caption = 'Form1'
-  ClientHeight = 101
-  ClientWidth = 352
+  ClientHeight = 141
+  ClientWidth = 449
   OnCreate = FormCreate
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.2.0.4'
   object LabeledEdit1: TLabeledEdit
     Left = 96
     Height = 23
     Top = 24
-    Width = 144
+    Width = 248
     EditLabel.Height = 15
-    EditLabel.Width = 144
+    EditLabel.Width = 248
     EditLabel.Caption = 'Target file'
-    EditLabel.ParentColor = False
     TabOrder = 0
     Text = 'LabeledEdit1'
     OnChange = LabeledEdit1Change
   end
   object Button1: TButton
-    Left = 248
+    Left = 352
     Height = 25
     Top = 24
     Width = 88
@@ -31,7 +30,7 @@ object Form1: TForm1
     TabOrder = 1
   end
   object Button2: TButton
-    Left = 128
+    Left = 168
     Height = 25
     Top = 64
     Width = 88
@@ -39,9 +38,16 @@ object Form1: TForm1
     OnClick = Button2Click
     TabOrder = 2
   end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 118
+    Width = 449
+    Panels = <>
+  end
   object OpenDialog1: TOpenDialog
     OnCanClose = OpenDialog1CanClose
     Left = 24
-    Top = 24
+    Top = 64
   end
 end

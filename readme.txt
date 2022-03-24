@@ -1,6 +1,6 @@
                                 Magic swf shell
 
-                                  Version 0.2.1
+                                  Version 0.2.8
 
                          This software made by Popov Evgeniy Alekseyevich
 
@@ -17,7 +17,7 @@ Prepare for first start
 
 Do these steps before first start:
 1. Put executable file of Magic swf to Magic swf shell directory.
-2. Rename executable file of Flash Player Projector to player.exe. Put it to Magic swf shell directory.
+2. Put executable file of Flash Player Projector to Magic swf shell directory.
 
 License
 
@@ -30,10 +30,14 @@ You can send me a letter to tuzik87@inbox.ru
 About program modification
 
 Source code is included in source.zip archive.
-It can be compiled under Lazarus 2.0.10 or higher.
+It can be compiled under Lazarus 2.2 or higher.
 
 Change log
 
 0.1 - Initial version.
 0.2 - Small changes.
 0.2.1 - Small bug was fixed.
+0.2.2 - 0.2.4 - Small changes.
+0.2.5 - Flash player projector checking was added.
+0.2.6 - User interface was improvent.
+0.2.7 - 0.2.8 - Small changes.
