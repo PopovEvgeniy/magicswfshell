@@ -1,10 +1,10 @@
 object Form1: TForm1
   Left = 254
-  Height = 141
+  Height = 130
   Top = 155
   Width = 449
   Caption = 'Form1'
-  ClientHeight = 141
+  ClientHeight = 130
   ClientWidth = 449
   OnCreate = FormCreate
   LCLVersion = '2.2.0.4'
@@ -37,13 +37,6 @@ object Form1: TForm1
     Caption = 'Start'
     OnClick = Button2Click
     TabOrder = 2
-  end
-  object StatusBar1: TStatusBar
-    Left = 0
-    Height = 23
-    Top = 118
-    Width = 449
-    Panels = <>
   end
   object OpenDialog1: TOpenDialog
     OnCanClose = OpenDialog1CanClose

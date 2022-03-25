@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Dialogs,
-  ExtCtrls, StdCtrls, ComCtrls, LCLIntf;
+  ExtCtrls, StdCtrls, ComCtrls;
 
 type
 
@@ -17,7 +17,6 @@ type
     Button2: TButton;
     LabeledEdit1: TLabeledEdit;
     OpenDialog1: TOpenDialog;
-    StatusBar1: TStatusBar;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -34,14 +33,13 @@ function get_projector(): string;
 function get_compiler(): string;
 function convert_file_name(source:string): string;
 function execute_program(executable:string;argument:string):Integer;
-procedure check_projector();
 procedure window_setup();
 procedure dialog_setup();
 procedure interface_setup();
 procedure common_setup();
 procedure language_setup();
 procedure setup();
-procedure compile_flash(target:string);
+function compile_flash(target:string):string;
 
 implementation
 
@@ -77,25 +75,10 @@ begin
  execute_program:=code;
 end;
 
-procedure check_projector();
-var target:string;
-begin
- target:=get_projector();
- if FileExists(target)=False then
- begin
-  if MessageDlg(Application.Title,'Flash player projector not found. Do you want open download page?',mtConfirmation,mbYesNo,0)=mrYes then
-  begin
-   OpenDocument('http://www.adobe.com/support/flashplayer/downloads.html');
-  end;
-
- end;
-
-end;
-
 procedure window_setup();
 begin
  Application.Title:='Magic swf shell';
- Form1.Caption:='Magic swf shell 0.2.8';
+ Form1.Caption:='Magic swf shell 0.3.1';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
@@ -131,34 +114,28 @@ begin
  Form1.Button1.Caption:='Open';
  Form1.Button2.Caption:='Start';
  Form1.OpenDialog1.Title:='Open a Adobe flash movie';
- Form1.StatusBar1.SimpleText:='Please set the target file';
 end;
 
 procedure setup();
 begin
  common_setup();
  language_setup();
- check_projector();
 end;
 
-procedure compile_flash(target:string);
-var host,player,argument:string;
-var message:array[0..5] of string=('Operation was successfully complete','Cant open input file','Cant create output file','Cant allocate memory','Executable file of Flash Player Projector was corrupted','Flash movie was corrupted');
-var status:Integer;
+function compile_flash(target:string):string;
+var status,player,argument:string;
+var information:array[0..5] of string=('Operation was successfully complete','Cant open input file','Cant create output file','Cant allocate memory','Executable file of Flash Player Projector was corrupted','Flash movie was corrupted');
+var id:Integer;
 begin
- host:=get_compiler();
+ status:='Can not execute a external program';
  player:=get_projector();
  argument:=convert_file_name(player)+' '+convert_file_name(target);
- status:=execute_program(host,argument);
- if status=-1 then
+ id:=execute_program(get_compiler(),argument);
+ if id>=0 then
  begin
-  Form1.StatusBar1.SimpleText:='Can not execute a external program';
- end
- else
- begin
-  Form1.StatusBar1.SimpleText:=message[status];
+  status:=information[id];
  end;
-
+ compile_flash:=status;
 end;
 
 { TForm1 }
@@ -171,7 +148,6 @@ end;
 procedure TForm1.LabeledEdit1Change(Sender: TObject);
 begin
  Form1.Button2.Enabled:=Form1.LabeledEdit1.Text<>'';
- Form1.StatusBar1.SimpleText:='Ready';
 end;
 
 procedure TForm1.OpenDialog1CanClose(Sender: TObject; var CanClose: boolean);
@@ -186,7 +162,7 @@ end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
- compile_flash(Form1.LabeledEdit1.Text);
+ ShowMessage(compile_flash(Form1.LabeledEdit1.Text));
 end;
 
 {$R *.lfm}
