@@ -1,6 +1,6 @@
                                 Magic swf shell
 
-                                  Version 0.3.1
+                                  Version 0.3.2
 
                          This software made by Popov Evgeniy Alekseyevich
 
@@ -29,8 +29,8 @@ You can send me a letter to tuzik87@inbox.ru
 
 About program modification
 
-Source code is included in source.zip archive.
-It can be compiled under Lazarus 2.2 or higher.
+Source code included in source.zip archive.
+It can be compiled under Lazarus 2.2.2 or higher.
 
 Change log
 
@@ -44,3 +44,4 @@ Change log
 0.2.9 - Small changes.
 0.3 - Flash player projector checking removed.
 0.3.1 - User interface changed.
+0.3.2 - Small changes.
