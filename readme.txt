@@ -1,13 +1,13 @@
                                 Magic swf shell
 
-                                  Version 0.3.2
+                                  Version 0.3.2.1
 
                          This software made by Popov Evgeniy Alekseyevich
 
 System requirement
 
-Windows 2000 or higher for 32 bit system
-Windows Vista or higher for 64 bit system
+Windows 2000 or higher for 32-bit system
+Windows Vista or higher for 64-bit system
 
 Program description
 
@@ -39,9 +39,10 @@ Change log
 0.2.1 - Small bug fixed.
 0.2.2 - 0.2.4 - Small changes.
 0.2.5 - Flash player projector checking added.
-0.2.6 - User interface was improvement.
+0.2.6 - User interface improved.
 0.2.7 - 0.2.8 - Small changes.
 0.2.9 - Small changes.
 0.3 - Flash player projector checking removed.
 0.3.1 - User interface changed.
 0.3.2 - Small changes.
+0.3.2.1 - Documentation updated.
