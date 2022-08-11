@@ -67,7 +67,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Magic swf shell';
- Form1.Caption:='Magic swf shell 0.3.2';
+ Form1.Caption:='Magic swf shell 0.3.3';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
@@ -90,13 +90,6 @@ begin
  Form1.LabeledEdit1.Enabled:=False;
 end;
 
-procedure common_setup();
-begin
- window_setup();
- interface_setup();
- dialog_setup();
-end;
-
 procedure language_setup();
 begin
  Form1.LabeledEdit1.EditLabel.Caption:='Target file';
@@ -107,13 +100,15 @@ end;
 
 procedure setup();
 begin
- common_setup();
+ window_setup();
+ interface_setup();
+ dialog_setup();
  language_setup();
 end;
 
 function compile_flash(target:string):string;
 var status,player,argument:string;
-var information:array[0..5] of string=('Operation was successfully complete','Cant open input file','Cant create output file','Cant allocate memory','Executable file of Flash Player Projector was corrupted','Flash movie was corrupted');
+var information:array[0..5] of string=('Operation was successfully complete','Cant open input file','Cant create output file','Cant allocate memory','Executable file of Flash Player Projector corrupted','Flash movie corrupted');
 var id:Integer;
 begin
  status:='Can not execute a external program';
