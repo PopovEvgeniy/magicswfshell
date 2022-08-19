@@ -1,6 +1,6 @@
                                 Magic swf shell
 
-                                  Version 0.3.3
+                                  Version 0.3.3.1
 
                          This software made by Popov Evgeniy Alekseyevich
 
@@ -16,8 +16,8 @@ This program is a graphic shell for Magic swf.
 Prepare for first start
 
 Do these steps before first start:
-1. Put executable file of Magic swf to Magic swf shell directory.
-2. Put executable file of Flash Player Projector to Magic swf shell directory.
+1. Put the executable file of Magic swf to Magic swf shell directory.
+2. Put the executable file of Flash Player Projector to Magic swf shell directory.
 
 License
 
@@ -47,3 +47,4 @@ Change log
 0.3.2 - Small changes.
 0.3.2.1 - Documentation updated.
 0.3.3 - Small changes.
+0.3.3.1 - Documentation updated.
