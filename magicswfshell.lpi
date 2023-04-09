@@ -78,14 +78,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="58"/>
-        <CursorPos X="217" Y="111"/>
+        <CursorPos X="45" Y="9"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
     </Units>
-    <JumpHistory Count="13" HistoryIndex="12">
+    <JumpHistory Count="14" HistoryIndex="13">
       <Position1>
         <Filename Value="magicswfshellcode.pas"/>
         <Caret Line="168" Column="6" TopLine="162"/>
@@ -138,6 +137,10 @@
         <Filename Value="magicswfshellcode.pas"/>
         <Caret Line="123" Column="19" TopLine="117"/>
       </Position13>
+      <Position14>
+        <Filename Value="magicswfshellcode.pas"/>
+        <Caret Line="9" Column="44" TopLine="120"/>
+      </Position14>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

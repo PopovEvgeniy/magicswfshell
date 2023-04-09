@@ -5,8 +5,8 @@ unit magicswfshellcode;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Dialogs,
-  ExtCtrls, StdCtrls, ComCtrls;
+  Classes, SysUtils, Forms, Controls, Dialogs,
+  ExtCtrls, StdCtrls, ComCtrls, LazFileUtils;
 
 type
 
@@ -42,7 +42,7 @@ begin
  get_compiler:=ExtractFilePath(Application.ExeName)+'magicswf.exe';
 end;
 
-function convert_file_name(source:string): string;
+function convert_file_name(const source:string): string;
 var target:string;
 begin
  target:=source;
@@ -53,7 +53,7 @@ begin
  convert_file_name:=target;
 end;
 
-function execute_program(executable:string;argument:string):Integer;
+function execute_program(const executable:string;const argument:string):Integer;
 var code:Integer;
 begin
  try
@@ -67,7 +67,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Magic swf shell';
- Form1.Caption:='Magic swf shell 0.3.3';
+ Form1.Caption:='Magic swf shell 0.3.4';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
@@ -106,7 +106,7 @@ begin
  language_setup();
 end;
 
-function compile_flash(target:string):string;
+function compile_flash(const target:string):string;
 var status,player,argument:string;
 var information:array[0..5] of string=('Operation was successfully complete','Cant open input file','Cant create output file','Cant allocate memory','Executable file of Flash Player Projector corrupted','Flash movie corrupted');
 var id:Integer;
