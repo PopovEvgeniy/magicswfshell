@@ -66,7 +66,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Magic swf shell';
- Form1.Caption:='Magic swf shell 0.3.5';
+ Form1.Caption:='Magic swf shell 0.3.6';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
@@ -76,7 +76,7 @@ procedure dialog_setup();
 begin
  Form1.OpenDialog1.FileName:='*.swf';
  Form1.OpenDialog1.DefaultExt:='*.swf';
- Form1.OpenDialog1.Filter:='Adobe flash movies|*.swf';
+ Form1.OpenDialog1.Filter:='Adobe Flash movies|*.swf';
 end;
 
 procedure interface_setup();
@@ -94,7 +94,7 @@ begin
  Form1.LabeledEdit1.EditLabel.Caption:='Target file';
  Form1.Button1.Caption:='Open';
  Form1.Button2.Caption:='Start';
- Form1.OpenDialog1.Title:='Open a Adobe flash movie';
+ Form1.OpenDialog1.Title:='Open an Adobe Flash movie';
 end;
 
 procedure setup();
@@ -107,10 +107,10 @@ end;
 
 function compile_flash(const target:string):string;
 var status,player,argument:string;
-var information:array[0..5] of string=('Operation was successfully complete','Cant open input file','Cant create output file','Cant allocate memory','Executable file of Flash Player Projector corrupted','Flash movie corrupted');
+var information:array[0..5] of string=('Operation was successfully complete','Cant open the input file','Cant create the output file','Cant allocate memory','The executable file of the Flash Player Projector was corrupted','The Flash movie was corrupted');
 var id:Integer;
 begin
- status:='Can not execute a external program';
+ status:='Can not execute an external program';
  player:=get_projector();
  argument:=convert_file_name(player)+' '+convert_file_name(target);
  id:=execute_program(get_compiler(),argument);
