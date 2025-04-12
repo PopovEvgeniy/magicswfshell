@@ -10,24 +10,24 @@ uses
 
 type
 
-  { TForm1 }
+  { TMainWindow }
 
-  TForm1 = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    LabeledEdit1: TLabeledEdit;
-    OpenDialog1: TOpenDialog;
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+  TMainWindow = class(TForm)
+    OpenButton: TButton;
+    StartButton: TButton;
+    FileField: TLabeledEdit;
+    OpenDialog: TOpenDialog;
+    procedure OpenButtonClick(Sender: TObject);
+    procedure StartButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure LabeledEdit1Change(Sender: TObject);
+    procedure FileFieldChange(Sender: TObject);
   private
     { private declarations }
   public
     { public declarations }
   end; 
 
-var Form1: TForm1;
+var MainWindow: TMainWindow;
 
 implementation
 
@@ -66,35 +66,35 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Magic swf shell';
- Form1.Caption:='Magic swf shell 0.3.7';
- Form1.BorderStyle:=bsDialog;
- Form1.Font.Name:=Screen.MenuFont.Name;
- Form1.Font.Size:=14;
+ MainWindow.Caption:='Magic swf shell 0.3.8';
+ MainWindow.BorderStyle:=bsDialog;
+ MainWindow.Font.Name:=Screen.MenuFont.Name;
+ MainWindow.Font.Size:=14;
 end;
 
 procedure dialog_setup();
 begin
- Form1.OpenDialog1.FileName:='*.swf';
- Form1.OpenDialog1.DefaultExt:='*.swf';
- Form1.OpenDialog1.Filter:='Adobe Flash movies|*.swf';
+ MainWindow.OpenDialog.FileName:='*.swf';
+ MainWindow.OpenDialog.DefaultExt:='*.swf';
+ MainWindow.OpenDialog.Filter:='Adobe Flash movies|*.swf';
 end;
 
 procedure interface_setup();
 begin
- Form1.Button1.ShowHint:=False;
- Form1.Button2.ShowHint:=Form1.Button1.ShowHint;
- Form1.Button2.Enabled:=False;
- Form1.LabeledEdit1.Text:='';
- Form1.LabeledEdit1.LabelPosition:=lpLeft;
- Form1.LabeledEdit1.Enabled:=False;
+ MainWindow.OpenButton.ShowHint:=False;
+ MainWindow.StartButton.ShowHint:=MainWindow.OpenButton.ShowHint;
+ MainWindow.StartButton.Enabled:=False;
+ MainWindow.FileField.Text:='';
+ MainWindow.FileField.LabelPosition:=lpLeft;
+ MainWindow.FileField.Enabled:=False;
 end;
 
 procedure language_setup();
 begin
- Form1.LabeledEdit1.EditLabel.Caption:='Target file';
- Form1.Button1.Caption:='Open';
- Form1.Button2.Caption:='Start';
- Form1.OpenDialog1.Title:='Open an Adobe Flash movie';
+ MainWindow.FileField.EditLabel.Caption:='Target file';
+ MainWindow.OpenButton.Caption:='Open';
+ MainWindow.StartButton.Caption:='Start';
+ MainWindow.OpenDialog.Title:='Open an Adobe Flash movie';
 end;
 
 procedure setup();
@@ -107,7 +107,7 @@ end;
 
 function compile_flash(const target:string):string;
 var status,player,argument:string;
-var information:array[0..5] of string=('Operation was successfully complete','Cant open the input file','Cant create the output file','Cant allocate memory','The executable file of the Flash Player Projector was corrupted','The Flash movie was corrupted');
+var information:array[0..5] of string=('The operation was successfully completed','Cant open the input file','Cant create the output file','Cant allocate memory','The executable file of the Flash Player Projector was corrupted','The Flash movie was corrupted');
 var id:Integer;
 begin
  status:='Can not execute an external program';
@@ -121,26 +121,26 @@ begin
  compile_flash:=status;
 end;
 
-{ TForm1 }
+{ TMainWindow }
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TMainWindow.FormCreate(Sender: TObject);
 begin
  setup();
 end;
 
-procedure TForm1.LabeledEdit1Change(Sender: TObject);
+procedure TMainWindow.FileFieldChange(Sender: TObject);
 begin
- Form1.Button2.Enabled:=Form1.LabeledEdit1.Text<>'';
+ MainWindow.StartButton.Enabled:=MainWindow.FileField.Text<>'';
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TMainWindow.OpenButtonClick(Sender: TObject);
 begin
- if Form1.OpenDialog1.Execute()=True then Form1.LabeledEdit1.Text:=Form1.OpenDialog1.FileName;
+ if MainWindow.OpenDialog.Execute()=True then MainWindow.FileField.Text:=MainWindow.OpenDialog.FileName;
 end;
 
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TMainWindow.StartButtonClick(Sender: TObject);
 begin
- ShowMessage(compile_flash(Form1.LabeledEdit1.Text));
+ ShowMessage(compile_flash(MainWindow.FileField.Text));
 end;
 
 {$R *.lfm}
