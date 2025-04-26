@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Dialogs,
-  ExtCtrls, StdCtrls, ComCtrls, LazFileUtils;
+  ExtCtrls, StdCtrls, ComCtrls;
 
 type
 
@@ -66,7 +66,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Magic swf shell';
- MainWindow.Caption:='Magic swf shell 0.3.8';
+ MainWindow.Caption:='Magic swf shell 0.3.9';
  MainWindow.BorderStyle:=bsDialog;
  MainWindow.Font.Name:=Screen.MenuFont.Name;
  MainWindow.Font.Size:=14;

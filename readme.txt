@@ -1,6 +1,6 @@
                                 Magic swf shell
 
-                                  Version 0.3.8
+                                  Version 0.3.9
 
                          This software was made by Popov Evgeniy Alekseyevich
 
@@ -53,3 +53,4 @@ Change log
 0.3.6.1-0.3.6.2: The documentation has been updated.
 0.3.7: The source code was recompiled under Lazarus 4.0 RC1.
 0.3.8: The source code was recompiled under Lazarus 4.0 RC3.
+0.3.9: The small changes.
