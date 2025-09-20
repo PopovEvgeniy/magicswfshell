@@ -66,7 +66,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Magic swf shell';
- MainWindow.Caption:='Magic swf shell 0.3.9';
+ MainWindow.Caption:='Magic swf shell 0.4';
  MainWindow.BorderStyle:=bsDialog;
  MainWindow.Font.Name:=Screen.MenuFont.Name;
  MainWindow.Font.Size:=14;

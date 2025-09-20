@@ -1,36 +1,31 @@
                                 Magic swf shell
 
-                                  Version 0.3.9.1
+                                  Version 0.4
 
                          This software was made by Popov Evgeniy Alekseyevich
 
-System requirements
+System requirements.
 
 Windows 2000 or higher for 32-bit systems
-
 Windows Vista or higher for 64-bit systems
 
-Program description
+The program description.
 
 This program is a graphic shell for Magic swf.
-
-Prepare
-
-Do these steps before:
-
+Do these steps before the first start:
 1. Put the executable file of the Magic swf in the Magic swf shell directory.
 2. Put the executable file of the Flash Player Projector in the Magic swf shell directory.
 
-License
+License.
 
 This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 
-About program modification
+The source code.
 
 The code is included in the source.zip archive.
-It can be compiled under Lazarus 4.0 RC3 or higher.
+It can be compiled under Lazarus 4.2 or higher.
 
-Change log
+Version history.
 
 0.1: The initial version.
 0.2: The small changes.
@@ -53,3 +48,4 @@ Change log
 0.3.8: The source code was recompiled under Lazarus 4.0 RC3.
 0.3.9: The small changes.
 0.3.9.1: The documentation has been updated.
+0.4: The source code was recompiled under Lazarus 4.2.
