@@ -1,6 +1,6 @@
                                 Magic swf shell
 
-                                  Version 0.4.1
+                                  Version 0.4.2
 
                          This software was made by Popov Evgeniy Alekseyevich
 
@@ -23,7 +23,7 @@ This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 The source code.
 
 The code is included in the source.zip archive.
-It can be compiled under Lazarus 4.6 or higher.
+It can be compiled under Lazarus 4.8 or higher.
 
 Version history.
 
@@ -50,3 +50,4 @@ Version history.
 0.3.9.1: The documentation has been updated.
 0.4: The source code was recompiled under Lazarus 4.2.
 0.4.1: The program was adapted to the new version of Magic Swf.
+0.4.2: The small changes.

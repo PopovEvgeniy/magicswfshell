@@ -38,6 +38,7 @@
           <Linking>
             <Debugging>
               <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
               <UseLineInfoUnit Value="False"/>
             </Debugging>
             <LinkSmart Value="True"/>
@@ -69,7 +70,7 @@
       <Unit0>
         <Filename Value="magicswfshell.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
       </Unit0>
       <Unit1>
         <Filename Value="magicswfshellcode.pas"/>
@@ -78,14 +79,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="100"/>
-        <CursorPos Y="110"/>
-        <UsageCount Value="23"/>
+        <CursorPos X="2" Y="6"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
     </Units>
-    <JumpHistory Count="18" HistoryIndex="17">
+    <JumpHistory Count="20" HistoryIndex="19">
       <Position1>
         <Filename Value="magicswfshellcode.pas"/>
         <Caret Line="168" Column="6" TopLine="162"/>
@@ -158,6 +158,14 @@
         <Filename Value="magicswfshellcode.pas"/>
         <Caret Line="138" Column="95" TopLine="130"/>
       </Position18>
+      <Position19>
+        <Filename Value="magicswfshellcode.pas"/>
+        <Caret Line="88" Column="2" TopLine="76"/>
+      </Position19>
+      <Position20>
+        <Filename Value="magicswfshellcode.pas"/>
+        <Caret Line="94" Column="11" TopLine="80"/>
+      </Position20>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -182,6 +190,7 @@
     <Linking>
       <Debugging>
         <GenerateDebugInfo Value="False"/>
+        <RunWithoutDebug Value="True"/>
         <UseLineInfoUnit Value="False"/>
       </Debugging>
       <LinkSmart Value="True"/>

@@ -1,12 +1,16 @@
 unit magicswfshellcode;
 
-{$mode objfpc}{$H+}
+{
+ This sofware was made by Popov Evgeniy Alekseyevich.
+ It is distributed under the GNU GENERAL PUBLIC LICENSE (Version 2 or higher).
+}
+
+{$mode objfpc}
+{$H+}
 
 interface
 
-uses
-  Classes, SysUtils, Forms, Controls, Dialogs,
-  ExtCtrls, StdCtrls, ComCtrls;
+uses Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls, ComCtrls;
 
 type
 
@@ -22,7 +26,11 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FileFieldChange(Sender: TObject);
   private
-    { private declarations }
+    procedure window_setup();
+    procedure interface_setup();
+    procedure dialog_setup();
+    procedure language_setup();
+    procedure setup();
   public
     { public declarations }
   end; 
@@ -63,48 +71,6 @@ begin
  execute_program:=code;
 end;
 
-procedure window_setup();
-begin
- Application.Title:='Magic swf shell';
- MainWindow.Caption:='Magic swf shell 0.4.1';
- MainWindow.BorderStyle:=bsDialog;
- MainWindow.Font.Name:=Screen.MenuFont.Name;
- MainWindow.Font.Size:=14;
-end;
-
-procedure dialog_setup();
-begin
- MainWindow.OpenDialog.FileName:='*.swf';
- MainWindow.OpenDialog.DefaultExt:='*.swf';
- MainWindow.OpenDialog.Filter:='Adobe Flash movies|*.swf';
-end;
-
-procedure interface_setup();
-begin
- MainWindow.OpenButton.ShowHint:=False;
- MainWindow.StartButton.ShowHint:=MainWindow.OpenButton.ShowHint;
- MainWindow.StartButton.Enabled:=False;
- MainWindow.FileField.Text:='';
- MainWindow.FileField.LabelPosition:=lpLeft;
- MainWindow.FileField.Enabled:=False;
-end;
-
-procedure language_setup();
-begin
- MainWindow.FileField.EditLabel.Caption:='Target file';
- MainWindow.OpenButton.Caption:='Open';
- MainWindow.StartButton.Caption:='Start';
- MainWindow.OpenDialog.Title:='Open an Adobe Flash movie';
-end;
-
-procedure setup();
-begin
- window_setup();
- interface_setup();
- dialog_setup();
- language_setup();
-end;
-
 function compile_flash(const target:string):string;
 var status,player,argument:string;
 var information:array[0..7] of string=('The operation was successfully completed','Can not open the input file','Can not create the output file','Can not read data','Can not write data','Can not allocate memory','The executable file of the Flash Player projector was corrupted','The Flash movie was corrupted');
@@ -121,26 +87,68 @@ begin
  compile_flash:=status;
 end;
 
+procedure TMainWindow.window_setup();
+begin
+ Application.Title:='Magic swf shell';
+ Self.Caption:='Magic swf shell 0.4.2';
+ Self.BorderStyle:=bsDialog;
+ Self.Font.Name:=Screen.MenuFont.Name;
+ Self.Font.Size:=14;
+end;
+
+procedure TMainWindow.dialog_setup();
+begin
+ Self.OpenDialog.FileName:='*.swf';
+ Self.OpenDialog.DefaultExt:='*.swf';
+ Self.OpenDialog.Filter:='Adobe Flash movies|*.swf';
+end;
+
+procedure TMainWindow.interface_setup();
+begin
+ Self.OpenButton.ShowHint:=False;
+ Self.StartButton.ShowHint:=False;
+ Self.StartButton.Enabled:=False;
+ Self.FileField.Text:='';
+ Self.FileField.LabelPosition:=lpLeft;
+ Self.FileField.Enabled:=False;
+end;
+
+procedure TMainWindow.language_setup();
+begin
+ Self.FileField.EditLabel.Caption:='Target file';
+ Self.OpenButton.Caption:='Open';
+ Self.StartButton.Caption:='Start';
+ Self.OpenDialog.Title:='Open an Adobe Flash movie';
+end;
+
+procedure TMainWindow.setup();
+begin
+ Self.window_setup();
+ Self.interface_setup();
+ Self.dialog_setup();
+ Self.language_setup();
+end;
+
 { TMainWindow }
 
 procedure TMainWindow.FormCreate(Sender: TObject);
 begin
- setup();
+ Self.setup();
 end;
 
 procedure TMainWindow.FileFieldChange(Sender: TObject);
 begin
- MainWindow.StartButton.Enabled:=MainWindow.FileField.Text<>'';
+ Self.StartButton.Enabled:=Self.FileField.Text<>'';
 end;
 
 procedure TMainWindow.OpenButtonClick(Sender: TObject);
 begin
- if MainWindow.OpenDialog.Execute()=True then MainWindow.FileField.Text:=MainWindow.OpenDialog.FileName;
+ if Self.OpenDialog.Execute()=True then Self.FileField.Text:=Self.OpenDialog.FileName;
 end;
 
 procedure TMainWindow.StartButtonClick(Sender: TObject);
 begin
- ShowMessage(compile_flash(MainWindow.FileField.Text));
+ ShowMessage(compile_flash(Self.FileField.Text));
 end;
 
 {$R *.lfm}
