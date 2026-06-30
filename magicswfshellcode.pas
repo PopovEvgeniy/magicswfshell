@@ -73,10 +73,10 @@ end;
 
 function compile_flash(const target:string):string;
 var status,player,argument:string;
-var information:array[0..7] of string=('The operation was successfully completed','Can not open the input file','Can not create the output file','Can not read data','Can not write data','Can not allocate memory','The executable file of the Flash Player projector was corrupted','The Flash movie was corrupted');
+var information:array[0..7] of string=('The operation was successfully completed','Cannot open the input file','Cannot create the output file','Cannot read data','Cannot write data','Cannot allocate memory','The executable file of the Flash Player projector was corrupted','The Flash movie was corrupted');
 var id:Integer;
 begin
- status:='Can not execute an external program';
+ status:='Cannot execute an external program';
  player:=get_projector();
  argument:=convert_file_name(player)+' '+convert_file_name(target);
  id:=execute_program(get_compiler(),argument);
@@ -90,7 +90,7 @@ end;
 procedure TMainWindow.window_setup();
 begin
  Application.Title:='Magic swf shell';
- Self.Caption:='Magic swf shell 0.4.2';
+ Self.Caption:='Magic swf shell 0.4.3';
  Self.BorderStyle:=bsDialog;
  Self.Font.Name:=Screen.MenuFont.Name;
  Self.Font.Size:=14;
