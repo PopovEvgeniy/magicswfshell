@@ -1,6 +1,6 @@
                                 Magic swf shell
 
-                                  Version 0.4.4
+                                  Version 0.4.5
 
                          This software was made by Popov Evgeniy Alekseyevich
 
@@ -52,3 +52,4 @@ Version history.
 0.4.1: The program was adapted to the new version of Magic Swf.
 0.4.2-0.4.3: The small changes.
 0.4.4: The program was adapted to the new version of Magic Swf.
+0.4.5: The small changes.

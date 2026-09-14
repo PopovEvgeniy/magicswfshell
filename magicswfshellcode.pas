@@ -41,12 +41,12 @@ implementation
 
 function get_projector(): string;
 begin
- get_projector:=ExtractFilePath(Application.ExeName)+'flashplayer_32_sa.exe';
+ Result:=ExtractFilePath(Application.ExeName)+'flashplayer_32_sa.exe';
 end;
 
 function get_compiler(): string;
 begin
- get_compiler:=ExtractFilePath(Application.ExeName)+'magicswf.exe';
+ Result:=ExtractFilePath(Application.ExeName)+'magicswf.exe';
 end;
 
 function convert_file_name(const source:string): string;
@@ -90,7 +90,7 @@ end;
 procedure TMainWindow.window_setup();
 begin
  Application.Title:='Magic swf shell';
- Self.Caption:='Magic swf shell 0.4.4';
+ Self.Caption:='Magic swf shell 0.4.5';
  Self.BorderStyle:=bsDialog;
  Self.Font.Name:=Screen.MenuFont.Name;
  Self.Font.Size:=14;
